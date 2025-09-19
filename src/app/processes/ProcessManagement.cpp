@@ -9,7 +9,7 @@
     #include <unistd.h>
     #include <sys/wait.h>
 #endif
-// #include "../encryptDecrypt/Cryption.hpp"
+#include "../encryptDecrypt/Cryption.hpp"
 
 using namespace std;
 
