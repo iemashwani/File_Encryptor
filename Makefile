@@ -30,6 +30,6 @@ $(CRYPTION_TARGET): $(CRYPTION_OBJ)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(MAIN_OBJ) $(CRYPTION_OBJ) $(MAIN_TARGET) $(CRYPTION_TARGET)
+	del /f /q main.o src\app\processes\ProcessManagement.o src\app\fileHandling\IO.o src\app\fileHandling\ReadEnv.o src\app\encryptDecrypt\Cryption.o src\app\encryptDecrypt\CryptionMain.o encrypt_decrypt.exe cryption.exe
 
 .PHONY: clean all
