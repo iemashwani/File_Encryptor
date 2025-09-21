@@ -1,20 +1,17 @@
-#ifndef IO_HPP // it compile once however you can use it multiple time
+#ifndef IO_HPP
 #define IO_HPP
 
 #include <fstream>
 #include <string>
-#include <iostream>
-using namespace std;
 
-class IO
-{
+class IO {
 public:
-    IO(const string &file_path);
+    IO(const std::string& file_path);
     ~IO();
-    fstream getFileStream();
+    std::fstream getFileStream();
 
 private:
-    fstream file_stream;
+    std::fstream file_stream;
 };
 
 #endif

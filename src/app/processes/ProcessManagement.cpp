@@ -1,36 +1,25 @@
 #include <iostream>
 #include "ProcessManagement.hpp"
+#include <unistd.h>
 #include <cstring>
-
-#ifdef _WIN32
-    // Windows-specific headers
-    #define NOMINMAX
-    #define WIN32_LEAN_AND_MEAN
-    #include <windows.h>
-#else
-    // Linux/Unix-specific headers
-    #include <unistd.h>
-    #include <sys/wait.h>
-#endif
-
-
+// #include <sys/wait.h> // Removed for Windows compatibility
 #include "../encryptDecrypt/Cryption.hpp"
-
-using namespace std;
 
 ProcessManagement::ProcessManagement() {}
 
-bool ProcessManagement::submitToQueue(unique_ptr<Task> task) {
-    taskQueue.push(move(task));
+bool ProcessManagement::submitToQueue(std::unique_ptr<Task> task) {
+    taskQueue.push(std::move(task));
     return true;
 }
 
 
 void ProcessManagement::executeTasks(){
     while(!taskQueue.empty()){
-        unique_ptr<Task> taskToExecute = move(taskQueue.front());
+        std::unique_ptr<Task> taskToExecute = std::move(taskQueue.front());
         taskQueue.pop();
-        cout << "Executing task: " << taskToExecute->toString() << endl;
+        std::cout << "Executing task: " << taskToExecute->toString() << std::endl;
         executeCryption(taskToExecute->toString());
     }
 }
+
+

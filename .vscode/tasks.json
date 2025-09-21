@@ -1,21 +1,61 @@
+// {
+//     "version": "2.0.0",
+//     "tasks": [
+//         {
+//             "label": "Build File Encryptor",
+//             "type": "shell",
+//             "command": "mingw32-make",
+//             "args": [],
+//             "group": {
+//                 "kind": "build",
+//                 "isDefault": true
+//             },
+//             "presentation": {
+//                 "echo": true,
+//                 "reveal": "always",
+//                 "focus": false,
+//                 "panel": "shared"
+//             },
+//             "problemMatcher": ["$gcc"]
+//         }
+//     ]
+// }
+
 {
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "shell",
             "label": "build",
-            "command": "make",
-            "args": [],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": [
-                "$gcc"
+            "type": "shell",
+            "command": "mingw32-make",
+            "args": [
+                "-g",                          // generate debug info
+                "-std=c++17",                  // C++17 standard
+                "${workspaceFolder}\\src\\*.cpp",  // all cpp files in src
+                "-I", "${workspaceFolder}\\include", // include folder
+                "-o", "${workspaceFolder}\\encrypt_decrypt.exe"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile all cpp files into encrypt_decrypt.exe"
+        },
+        {
+            "label": "build_cryption",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "${workspaceFolder}\\src\\*.cpp",
+                "-I", "${workspaceFolder}\\include",
+                "-o", "${workspaceFolder}\\cryption.exe"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile all cpp files into cryption.exe"
         }
     ]
 }
