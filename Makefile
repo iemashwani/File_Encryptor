@@ -1,4 +1,4 @@
-CXX = g++
+CXX = C:/msys64/mingw64/bin/g++.exe
 CXXFLAGS = -std=c++17 -g -Wall -I. -Isrc/app/encryptDecrypt -Isrc/app/fileHandling -Isrc/app/processes
 
 MAIN_TARGET = encrypt_decrypt
